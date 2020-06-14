@@ -5,12 +5,13 @@ import com.giuseppesorce.pokemonlist.di.components.ApplicationComponent
 import com.giuseppesorce.pokemonlist.di.components.DaggerApplicationComponent
 import com.giuseppesorce.pokemonlist.di.modules.ApplicationModule
 import com.giuseppesorce.pokemonlist.di.modules.NetworkModule
+import timber.log.Timber
 
 
 /**
  * @author Giuseppe Sorce
  */
-@Suppress("DEPRECATION")
+
 class AppApplication : Application(){
 
     companion object {
@@ -19,7 +20,7 @@ class AppApplication : Application(){
 
     override fun onCreate() {
         super.onCreate()
-
+        Timber.plant(Timber.DebugTree())
         applicationComponent = DaggerApplicationComponent.builder()
             .applicationModule(ApplicationModule(this))
             .networkModule(NetworkModule(BuildConfig.BASE_URL))

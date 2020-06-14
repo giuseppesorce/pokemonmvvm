@@ -3,7 +3,9 @@ package com.giuseppesorce.data.network.api
 
 
 import com.giuseppesorce.data.network.api.responses.PokemonListResponse
-import retrofit2.http.*
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Query
 
 /**
  * @author Giuseppe Sorce
@@ -11,7 +13,7 @@ import retrofit2.http.*
 interface PokemonServiceApi {
 
     @GET("pokemon/")
-   suspend fun getPokemon(@Query("offset") offset: String, @Query("limit") limit: String  ) : PokemonListResponse
+    fun getPokemon(@Query("offset") offset: String, @Query("limit") limit: String  ) : Call<PokemonListResponse>
 
 }
 

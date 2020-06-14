@@ -11,6 +11,7 @@ import com.giuseppesorce.pokemonlist.databinding.FragmentSplashBinding
 import com.giuseppesorce.pokemonlist.di.Injector
 import com.giuseppesorce.pokemonlist.models.SplashEvents
 import com.giuseppesorce.pokemonlist.models.SplashState
+import timber.log.Timber
 
 
 class SplashFragment : BaseViewBindingFragment<SplashState, SplashEvents>() {
@@ -26,7 +27,6 @@ class SplashFragment : BaseViewBindingFragment<SplashState, SplashEvents>() {
     override fun provideBaseViewModel(): BaseViewModel<SplashState, SplashEvents>? = fragmentViewModel
 
     override fun setupUI() {
-
     }
 
     override fun handleState(state: SplashState) {

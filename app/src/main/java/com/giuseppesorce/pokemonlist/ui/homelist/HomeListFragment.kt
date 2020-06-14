@@ -1,17 +1,31 @@
 package com.giuseppesorce.pokemonlist.ui.homelist
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.giuseppesorce.architecture.base.BaseViewBindingFragment
 import com.giuseppesorce.architecture.base.BaseViewModel
 import com.giuseppesorce.pokemonlist.databinding.FragmentHomeListBinding
 import com.giuseppesorce.pokemonlist.di.Injector
 import com.giuseppesorce.pokemonlist.models.HomeListEvents
 import com.giuseppesorce.pokemonlist.models.HomeListState
+import com.giuseppesorce.pokemonlist.models.Pokemon
+import com.giuseppesorce.pokemonlist.ui.adapters.PokemonListAdapter
 
 
 class HomeListFragment : BaseViewBindingFragment<HomeListState, HomeListEvents>() {
+
+
+    private val pokemonListAdapter: PokemonListAdapter by lazy {
+        PokemonListAdapter(
+            emptyList()
+        )
+    }
 
     private lateinit var binding: FragmentHomeListBinding
     private val fragmentViewModel: HomeListViewModel by lazy {
@@ -21,9 +35,41 @@ class HomeListFragment : BaseViewBindingFragment<HomeListState, HomeListEvents>(
         ).get(HomeListViewModel::class.java)
     }
 
-    override fun provideBaseViewModel(): BaseViewModel<HomeListState, HomeListEvents>? = fragmentViewModel
+    override fun provideBaseViewModel(): BaseViewModel<HomeListState, HomeListEvents>? =
+        fragmentViewModel
 
     override fun setupUI() {
+
+        binding.toolBar.setTitle("I Pokemon")
+
+
+        binding.rvList.layoutManager = GridLayoutManager(
+            activity?.applicationContext,
+           2
+        )
+        binding.rvList.adapter = pokemonListAdapter
+        pokemonListAdapter.onActionClickListener = { item: Pokemon, position: Int ->
+            fragmentViewModel.onSelectPokemon(item)
+        }
+
+    }
+
+    override fun observerData() {
+        fragmentViewModel.allPokemonsLD.observe(this, Observer {pokemons->
+            pokemonListAdapter.allPokemonns= pokemons
+
+        })
+
+    }
+
+    override fun showIdleState() {
+        binding.ivLogoAnim.pauseAnimation()
+        binding.ivLogoAnim.visibility= View.GONE
+    }
+
+    override fun showLoadingState() {
+        binding.ivLogoAnim.playAnimation()
+        binding.ivLogoAnim.visibility= View.VISIBLE
 
     }
 
