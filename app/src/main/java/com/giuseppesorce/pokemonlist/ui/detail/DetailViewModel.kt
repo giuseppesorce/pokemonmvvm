@@ -18,8 +18,6 @@ class DetailViewModel @Inject constructor(
 
 
     fun setPokemon(pokemon: Pokemon) {
-
-
         showLoading()
         viewModelScope.launch {
 

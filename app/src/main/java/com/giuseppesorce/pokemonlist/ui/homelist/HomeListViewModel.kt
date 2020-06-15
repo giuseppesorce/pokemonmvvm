@@ -31,8 +31,8 @@ class HomeListViewModel @Inject constructor(
             when(response){
 
                 is Result.Ok -> {
-                    var pokemonList = uiMapper.getPokemonList(response.value)
-                    allPokemonsLD.value= pokemonList
+                    pokemons = uiMapper.getPokemonList(response.value)
+                    allPokemonsLD.value= pokemons
                 }
                 is Result.Error ->{
 
@@ -44,6 +44,4 @@ class HomeListViewModel @Inject constructor(
     fun onSelectPokemon(pokemon: Pokemon) {
         emitEvent(HomeListEvents.ShowPokemonDetail(pokemon))
     }
-
-
 }

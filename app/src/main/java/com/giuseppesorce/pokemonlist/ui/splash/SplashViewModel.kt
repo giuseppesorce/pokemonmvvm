@@ -10,9 +10,7 @@ import com.giuseppesorce.pokemonlist.models.SplashState
 import javax.inject.Inject
 
 class SplashViewModel @Inject constructor(
-
 ) : BaseViewModel<SplashState, SplashEvents>() {
-
 
     private var PAUSE = 2700L
 
@@ -21,5 +19,4 @@ class SplashViewModel @Inject constructor(
             emitEvent(SplashEvents.GotoList)
         }, PAUSE)
     }
-
 }

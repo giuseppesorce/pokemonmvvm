@@ -30,7 +30,6 @@ class DetailFragment : BaseViewBindingFragment<DetailState, DetailEvents>() {
         )
     }
 
-
     private val fragmentViewModel: DetailViewModel by lazy {
         ViewModelProviders.of(
             this,
@@ -47,7 +46,6 @@ class DetailFragment : BaseViewBindingFragment<DetailState, DetailEvents>() {
         activity?.let {
             setStatusBarColor(ContextCompat.getColor(it, R.color.blu_background))
         }
-
         activity?.let {
             binding.toolBar.setNavigationIcon(ContextCompat.getDrawable(it, R.drawable.ic_back))
         }
@@ -55,7 +53,6 @@ class DetailFragment : BaseViewBindingFragment<DetailState, DetailEvents>() {
         binding.toolBar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
-
 
         binding.rvList.layoutManager = LinearLayoutManager(
             activity?.applicationContext,
@@ -68,13 +65,10 @@ class DetailFragment : BaseViewBindingFragment<DetailState, DetailEvents>() {
     override fun handleState(state: DetailState) {
 
         when (state) {
-
             is DetailState.PokemonDetail -> {
                 setPokemon(state)
             }
-
         }
-
     }
 
     private fun setPokemon(pokemon: DetailState.PokemonDetail) {

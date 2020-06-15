@@ -48,7 +48,7 @@ class HomeListFragment : BaseViewBindingFragment<HomeListState, HomeListEvents>(
             setStatusBarColor(ContextCompat.getColor(it, R.color.blu_background))
         }
 
-        binding.toolBar.setTitle("I Pokemon")
+        binding.toolBar.setTitle(getString(R.string.thepokemon))
         binding.rvList.layoutManager = GridLayoutManager(
             activity?.applicationContext,
            2
