@@ -34,22 +34,15 @@ class HomeListViewModel @Inject constructor(
                     var pokemonList = uiMapper.getPokemonList(response.value)
                     allPokemonsLD.value= pokemonList
                 }
-
                 is Result.Error ->{
 
                 }
-
             }
-
-
         }
-
-
     }
 
-    fun onSelectPokemon(item: Pokemon) {
-
-
+    fun onSelectPokemon(pokemon: Pokemon) {
+        emitEvent(HomeListEvents.ShowPokemonDetail(pokemon))
     }
 
 

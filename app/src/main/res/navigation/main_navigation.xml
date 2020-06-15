@@ -19,19 +19,30 @@
 
         </action>
     </fragment>
-
-
-    <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.giuseppesorce.pokemonlist.ui.detail.DetailFragment"
-        android:label="DetailFragment" />
-
     <fragment
         android:id="@+id/homeListFragment"
         android:name="com.giuseppesorce.pokemonlist.ui.homelist.HomeListFragment"
         android:label="HomeListFragment" >
         <action
             android:id="@+id/action_homeListFragment_to_detailFragment"
+            app:enterAnim="@anim/in_from_right"
+            app:exitAnim="@anim/stay"
+            app:popEnterAnim="@anim/stay"
+            app:popExitAnim="@anim/out_to_right"
             app:destination="@id/detailFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.giuseppesorce.pokemonlist.ui.detail.DetailFragment"
+        android:label="DetailFragment" >
+        <argument
+            android:name="pokemon"
+            android:defaultValue="@null"
+            app:argType="com.giuseppesorce.pokemonlist.models.Pokemon"
+            app:nullable="true" />
+
+    </fragment>
+
+
 </navigation>

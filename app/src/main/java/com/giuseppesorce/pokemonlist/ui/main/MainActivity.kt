@@ -27,8 +27,6 @@ class MainActivity : BaseActivityViewBinding<MainState, MainEvents>() {
     override fun handleState(state: MainState) {}
 
     override fun handleEvent(event: MainEvents) {
-
-
     }
 
     override fun setupUI() {

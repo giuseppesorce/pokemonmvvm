@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#f7d340</color>
-    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorPrimaryDark">#CCEDF2F7</color>
     <color name="colorAccent">#ff1c1c</color>
     <color name="ic_launcher_background">#FFFFFF</color>
 
     <color name="blu_background">#CCEDF2F7</color>
+    <color name="white">#FFFFFF</color>
     <color name="white22">#38FFFFFF</color>
+    <color name="white_almost">#F4F0F0</color>
+    <color name="black">#000000</color>
+    <color name="blu">#B33F51B5</color>
 </resources>

@@ -2,6 +2,7 @@ package com.giuseppesorce.pokemonlist.ui.splash
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.giuseppesorce.architecture.base.BaseViewBindingFragment
@@ -11,7 +12,6 @@ import com.giuseppesorce.pokemonlist.databinding.FragmentSplashBinding
 import com.giuseppesorce.pokemonlist.di.Injector
 import com.giuseppesorce.pokemonlist.models.SplashEvents
 import com.giuseppesorce.pokemonlist.models.SplashState
-import timber.log.Timber
 
 
 class SplashFragment : BaseViewBindingFragment<SplashState, SplashEvents>() {
@@ -27,10 +27,13 @@ class SplashFragment : BaseViewBindingFragment<SplashState, SplashEvents>() {
     override fun provideBaseViewModel(): BaseViewModel<SplashState, SplashEvents>? = fragmentViewModel
 
     override fun setupUI() {
+        activity?.let {
+            setStatusBarColor(ContextCompat.getColor(it, R.color.white))
+        }
+
     }
 
     override fun handleState(state: SplashState) {
-
     }
 
     override fun handleEvent(event: SplashEvents) {
@@ -39,11 +42,6 @@ class SplashFragment : BaseViewBindingFragment<SplashState, SplashEvents>() {
                 findNavController().navigate(R.id.action_splashFragment_to_homeListFragment)
             }
         }
-
-    }
-
-    override fun initFragment() {
-
     }
 
     override fun setFragmentViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
