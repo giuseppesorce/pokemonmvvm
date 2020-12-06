@@ -30,7 +30,6 @@ class SplashFragment : BaseViewBindingFragment<SplashState, SplashEvents>() {
         activity?.let {
             setStatusBarColor(ContextCompat.getColor(it, R.color.white))
         }
-
     }
 
     override fun handleState(state: SplashState) {
