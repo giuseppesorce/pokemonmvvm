@@ -11,8 +11,8 @@ import javax.inject.Inject
 
 class PokemonRepository @Inject constructor(private val pokemonApi: PokemonServiceApi) {
 
-    suspend fun getPokemonList(offset:Int, limit:Int): Result<PokemonListResponse> {
-        return pokemonApi.getPokemon(offset.toString(), limit.toString()).resultAwait()
+    suspend fun getPokemonList(pair: Pair<Int, Int>): Result<PokemonListResponse> {
+        return pokemonApi.getPokemon(pair.first.toString(), pair.second.toString()).resultAwait()
     }
 
     suspend fun getPokemonDetail(id:String): Result<PokemonDataResponse> {

@@ -4,6 +4,7 @@ import com.giuseppesorce.data.extension.Result
 import com.giuseppesorce.data.network.api.responses.PokemonDataResponse
 import com.giuseppesorce.data.network.api.responses.PokemonListResponse
 import com.giuseppesorce.data.repositories.PokemonRepository
+import com.giuseppesorce.domain.BuildConfig
 import javax.inject.Inject
 
 /**
@@ -12,7 +13,9 @@ import javax.inject.Inject
 class PokemonListUseCase @Inject constructor(
     private val pokemonRepository: PokemonRepository){
     suspend operator fun invoke(offset:Int, limit:Int): Result<PokemonListResponse> {
-        return pokemonRepository.getPokemonList(offset, limit)
+        val a = BuildConfig.BUILD_TYPE
+
+        return pokemonRepository.getPokemonList(Pair(offset, limit))
     }
 }
 

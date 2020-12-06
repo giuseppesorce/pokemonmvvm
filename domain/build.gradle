@@ -40,4 +40,15 @@ dependencies {
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.dagger:dagger-android-support:$dagger_version"
 
+    // Retrofit
+   // implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+  //  implementation "com.squareup.retrofit2:converter-gson:$retrofit2_converter_gson_version"
+    // Interceptors
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp3_logging_interceptor_version"
+
+    // Testing
+    testImplementation "io.mockk:mockk:1.10.2"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.0'
+
 }
